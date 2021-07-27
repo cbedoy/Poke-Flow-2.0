@@ -8,6 +8,8 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.poke.core.*
 import com.poke.core.data.database.dao.PokeDao
 import com.poke.core.data.database.AppDatabase
+import com.poke.core.data.local.LocalSource
+import com.poke.core.data.local.LocalSourceImpl
 import com.poke.core.data.pagination.PokeBoundaryCallback
 import com.poke.core.data.remote.PokeRemoteSource
 import com.poke.core.data.remote.PokeRemoteSourceImpl
@@ -73,10 +75,7 @@ val coreModule = module {
 
 
     single<PokeRepository>{
-        PokeRepositoryImpl(
-            pagedListConfig = get(),
-            boundaryCallback = get()
-        )
+        PokeRepositoryImpl()
     }
 
     single {
@@ -99,9 +98,17 @@ val coreModule = module {
         )
     }
 
+    single<LocalSource> {
+        LocalSourceImpl(
+            dao = get(),
+            pagedListConfig = get(),
+            boundaryCallback = get()
+        )
+    }
+
     viewModel {
         PokeViewModel(
-            repository = get()
+            localSource = get()
         )
     }
 
