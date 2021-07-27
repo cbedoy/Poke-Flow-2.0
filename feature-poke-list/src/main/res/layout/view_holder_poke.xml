@@ -8,7 +8,6 @@
 
     <androidx.cardview.widget.CardView
         app:cardCornerRadius="8dp"
-        app:cardBackgroundColor="#fff"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
@@ -17,18 +16,17 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+
             <ImageView
                 android:id="@+id/image"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:adjustViewBounds="true"
                 android:scaleType="centerCrop"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
                 app:layout_constraintBottom_toTopOf="@+id/name"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                android:background="#aaa"
                 tools:srcCompat="@tools:sample/avatars" />
 
             <TextView
@@ -36,19 +34,33 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
-                android:layout_marginBottom="16dp"
-                android:fontFamily="sans-serif"
+                android:layout_marginBottom="8dp"
+                android:fontFamily="sans-serif-black"
+                android:gravity="center"
+                android:lines="1"
+                android:maxLines="1"
                 android:textColor="#333"
                 android:textSize="16sp"
-                android:lines="2"
-                android:maxLines="2"
-                android:gravity="center"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/image"
                 tools:text="This is a movie name that could have more than one line" />
+
+            <TextView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:background="#ccc"
+                android:fontFamily="sans-serif-condensed"
+                android:gravity="center"
+                android:textColor="#FFF"
+                android:textSize="12sp"
+                android:id="@+id/number"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                tools:text="111" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

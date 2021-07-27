@@ -5,6 +5,7 @@ import android.view.View
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.poke.core.data.database.model.Poke
+import com.poke.core.extensions.asPokeNumber
 import com.poke.feature_poke_list.databinding.ViewHolderPokeBinding
 
 class PokeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -20,6 +21,7 @@ class PokeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
                 crossfade(true)
             }
             name.text = poke.name
+            number.text = poke.number.asPokeNumber
         }
     }
 }
