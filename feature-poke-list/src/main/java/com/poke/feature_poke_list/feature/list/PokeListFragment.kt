@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.*
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.poke.core.PokeViewModel
 import com.poke.feature_poke_list.R
@@ -16,7 +17,11 @@ class PokeListFragment : Fragment(R.layout.fragment_poke_list) {
 
     private val viewModel by viewModel<PokeViewModel>()
     private val pokeListAdapter = PokeListAdapter {
-
+        findNavController().navigate(
+                PokeListFragmentDirections.actionPokeListFragmentToPokeDetailFragment(
+                        selectedPoke = it
+                )
+        )
     }
 
     override fun onCreateView(
