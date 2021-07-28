@@ -8,6 +8,6 @@
     <fragment
         tools:layout="@layout/fragment_poke_list"
         android:id="@+id/pokeListFragment"
-        android:name="com.poke.feature_poke_list.PokeListFragment"
+        android:name="com.poke.feature_poke_list.feature.list.PokeListFragment"
         android:label="PokeListFragment" />
 </navigation>

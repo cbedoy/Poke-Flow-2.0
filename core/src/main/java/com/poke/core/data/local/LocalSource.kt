@@ -6,4 +6,6 @@ import com.poke.core.data.database.model.Poke
 
 interface LocalSource {
     val pokeLiveData: LiveData<PagedList<Poke>>
+
+    fun queryPokeLiveData(query: String): LiveData<PagedList<Poke>>
 }

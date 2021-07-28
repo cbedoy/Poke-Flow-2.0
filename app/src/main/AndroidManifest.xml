@@ -4,6 +4,9 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
 
+    <meta-data android:name="android.app.searchable"
+        android:resource="@xml/searchable" />
+
     <application
         android:name=".PokeApp"
         android:allowBackup="true"

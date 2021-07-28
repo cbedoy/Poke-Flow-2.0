@@ -12,6 +12,9 @@ interface PokeDao {
     @Query("SELECT * FROM poke ORDER BY number ASC")
     fun getAllAsDataSource(): DataSource.Factory<Int, Poke>
 
+    @Query("SELECT * FROM poke WHERE name LIKE :queryString ORDER BY number ASC")
+    fun getAllAsDataSourceWithQuery(queryString: String): DataSource.Factory<Int, Poke>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insertAll(pokes: List<Poke>)
 

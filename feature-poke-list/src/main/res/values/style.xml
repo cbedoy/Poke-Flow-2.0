@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="PokeTypeButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="strokeColor">#AAFFFFFF</item>
+        <item name="cornerRadius">8dp</item>
+        <item name="android:backgroundTint">#22FFFFFF</item>
+        <item name="android:textColor">#CCFFFFFF</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:singleLine">true</item>
+    </style>
+</resources>

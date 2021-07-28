@@ -1,10 +1,11 @@
-package com.poke.feature_poke_list
+package com.poke.feature_poke_list.feature.list
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import com.poke.core.data.database.model.Poke
+import com.poke.feature_poke_list.R
 
 class PokeListAdapter (
     private val onSelectedPoke: (Poke) -> Unit

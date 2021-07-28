@@ -18,4 +18,10 @@ class LocalSourceImpl(
             dao.getAllAsDataSource(),
             pagedListConfig
         ).setBoundaryCallback(boundaryCallback).build()
+
+    override fun queryPokeLiveData(query: String): LiveData<PagedList<Poke>> {
+        return LivePagedListBuilder(
+            dao.getAllAsDataSourceWithQuery(query), 20
+        ).build()
+    }
 }
