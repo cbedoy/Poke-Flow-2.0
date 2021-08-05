@@ -39,11 +39,25 @@ data class PokeItemResponse(
     val name: String? = "",
     val url: String? = "",
     val weight: Int? = 0,
+    @SerialName("base_experience") val experience: Int? = 0,
     val sprites: PokeSpriteResponse? = PokeSpriteResponse(),
     val types: List<PokeTypesResponse>? = emptyList(),
     val moves: List<PokeMovesResponse>? = emptyList(),
+    val stats: List<PokeStatResponse>? = emptyList(),
     val abilities: List<PokeAbilitiesResponse>? = emptyList(),
 )
+
+@Serializable
+data class PokeStatResponse(
+    @SerialName("base_stat") val baseStat: Int? = 0,
+    val stat: PokeStatItemResponse? = null
+)
+
+@Serializable
+data class PokeStatItemResponse(
+    val name: String? = null,
+)
+
 
 @Serializable
 data class PokeAbilitiesResponse(

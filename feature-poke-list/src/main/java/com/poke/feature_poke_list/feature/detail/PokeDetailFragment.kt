@@ -33,6 +33,10 @@ class PokeDetailFragment : Fragment(R.layout.fragment_poke_detail){
             }
             name.text = selectedPoke.name
             number.text = selectedPoke.number.asPokeNumber
+
+            val pokeDetailPageAdapter = PokeDetailPageAdapter(childFragmentManager)
+            pager.adapter = pokeDetailPageAdapter
+            tabLayout.setupWithViewPager(pager)
         }
     }
 
