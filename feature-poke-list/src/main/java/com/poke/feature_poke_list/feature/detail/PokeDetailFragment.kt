@@ -6,11 +6,13 @@ import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
 import coil.load
+import com.google.android.material.tabs.TabLayoutMediator
 import com.poke.core.data.database.model.Poke
 import com.poke.core.extensions.asPokeNumber
 import com.poke.core.extensions.resIdByName
 import com.poke.feature_poke_list.R
 import com.poke.feature_poke_list.databinding.FragmentPokeDetailBinding
+import java.util.*
 
 class PokeDetailFragment : Fragment(R.layout.fragment_poke_detail){
 
@@ -18,6 +20,9 @@ class PokeDetailFragment : Fragment(R.layout.fragment_poke_detail){
 
     private val selectedPoke: Poke
         get() = args.selectedPoke
+
+    private val pokeId: Long
+        get() = args.selectedPoke.number
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -34,15 +39,14 @@ class PokeDetailFragment : Fragment(R.layout.fragment_poke_detail){
             name.text = selectedPoke.name
             number.text = selectedPoke.number.asPokeNumber
 
-            val pokeDetailPageAdapter = PokeDetailPageAdapter(childFragmentManager)
+            val pokeDetailPageAdapter = PokeDetailPageAdapter(pokeId, this@PokeDetailFragment)
             pager.adapter = pokeDetailPageAdapter
-            tabLayout.setupWithViewPager(pager)
         }
     }
 
     private fun reloadBackground(binding: FragmentPokeDetailBinding, type: String?) {
         binding.container.setBackgroundResource(binding.container.context.resIdByName(
-                resIdName = type?.toLowerCase(),
+            resIdName = type?.toLowerCase(Locale.ROOT),
                 resType = "color"
         ))
     }

@@ -8,6 +8,8 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.poke.core.*
 import com.poke.core.data.database.dao.PokeDao
 import com.poke.core.data.database.AppDatabase
+import com.poke.core.data.database.dao.MoveDao
+import com.poke.core.data.database.dao.StatDao
 import com.poke.core.data.local.LocalSource
 import com.poke.core.data.local.LocalSourceImpl
 import com.poke.core.data.pagination.PokeBoundaryCallback
@@ -28,6 +30,10 @@ import org.koin.android.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
+private val json = Json {
+    ignoreUnknownKeys = true
+}
+
 val coreModule = module {
     fun provideDatabase(application: Application): AppDatabase {
         return Room.databaseBuilder(application, AppDatabase::class.java, "pokes")
@@ -37,6 +43,14 @@ val coreModule = module {
 
     fun providePokeDao(database: AppDatabase): PokeDao {
         return database.pokeDao()
+    }
+
+    fun provideStatDao(database: AppDatabase): StatDao {
+        return database.statDao()
+    }
+
+    fun provideMoveDao(database: AppDatabase): MoveDao {
+        return database.moveDao()
     }
 
     fun provideRetrofit() : Retrofit {
@@ -50,9 +64,7 @@ val coreModule = module {
         return Retrofit.Builder()
             .baseUrl("https://pokeapi.co/api/")
             .addCallAdapterFactory(NetworkResponseAdapterFactory())
-            .addConverterFactory(Json{
-                ignoreUnknownKeys = true
-            }.asConverterFactory("application/json".toMediaType()))
+            .addConverterFactory(json.asConverterFactory("application/json".toMediaType()))
             .client(httpClient.build())
             .build()
     }
@@ -68,6 +80,8 @@ val coreModule = module {
     single { providePagedListConfig() }
     single { provideDatabase(androidApplication()) }
     single { providePokeDao(get()) }
+    single { provideStatDao(get()) }
+    single { provideMoveDao(get())}
 
     factory {
         CoroutineScope(Dispatchers.IO + SupervisorJob())
@@ -75,7 +89,7 @@ val coreModule = module {
 
 
     single<PokeRepository>{
-        PokeRepositoryImpl()
+        PokeRepositoryImpl(statDao = get(), moveDao = get())
     }
 
     single {
@@ -86,9 +100,11 @@ val coreModule = module {
 
     single {
         PokeBoundaryCallback(
-            remoteSource = get(),
+            pokeRemoteSource = get(),
             coroutineScope = get(),
-            dao = get()
+            pokeDao = get(),
+            statDao = get(),
+            moveDao = get()
         )
     }
 

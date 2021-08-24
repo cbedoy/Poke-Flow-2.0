@@ -1,9 +1,9 @@
 package com.poke.core.data.remote
 
-import com.poke.core.data.database.model.Poke
+import com.poke.core.PokeItemResponse
 
 interface PokeRemoteSource {
 
-    suspend fun requestPokeDetail(pokeIndex: Int): Poke?
+    suspend fun requestPokeDetail(pokeIndex: Int): PokeItemResponse?
 
 }

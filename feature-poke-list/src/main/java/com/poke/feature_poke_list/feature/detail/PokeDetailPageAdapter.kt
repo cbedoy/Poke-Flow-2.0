@@ -1,22 +1,29 @@
 package com.poke.feature_poke_list.feature.detail
 
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.poke.feature_poke_list.feature.detail.move.presentation.ui.MOVE_FRAGMENT_POKE_ID
+import com.poke.feature_poke_list.feature.detail.move.presentation.ui.MoveFragment
+import com.poke.feature_poke_list.feature.detail.stats.presentation.ui.STATS_FRAGMENT_POKE_ID
+import com.poke.feature_poke_list.feature.detail.stats.presentation.ui.StatsFragment
 
-class PokeDetailPageAdapter(fm: FragmentManager) : FragmentStatePagerAdapter(
-    fm,
-    BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT
-) {
-    override fun getCount(): Int {
-        return 4
+class PokeDetailPageAdapter(private val pokeId: Long, fragment: Fragment) : FragmentStateAdapter(fragment) {
+
+    override fun getItemCount(): Int {
+        return 2
     }
 
-    override fun getItem(position: Int): Fragment {
-        return AboutDetailFragment()
+    override fun createFragment(position: Int): Fragment {
+        return if (position == 0) {
+            MoveFragment().apply {
+                arguments = bundleOf(MOVE_FRAGMENT_POKE_ID to pokeId)
+            }
+        }else {
+            StatsFragment().apply {
+                arguments = bundleOf(STATS_FRAGMENT_POKE_ID to pokeId)
+            }
+        }
     }
 
-    override fun getPageTitle(position: Int): CharSequence? {
-        return "Title $position"
-    }
 }

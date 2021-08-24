@@ -7,10 +7,9 @@ import kotlinx.parcelize.Parcelize
 
 @Entity
 @Parcelize
-data class Stat(
+data class Move(
     @PrimaryKey(autoGenerate = true)
     val key: Int = 0,
     val poke: Long,
-    val name: String,
-    val value: Int
+    val name: String
 ) : Parcelable

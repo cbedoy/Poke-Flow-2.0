@@ -3,6 +3,7 @@ package com.poke.core.extensions
 import android.content.Context
 import android.content.res.Configuration
 import android.content.res.Resources
+import android.view.Window
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView

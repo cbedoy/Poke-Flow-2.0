@@ -29,7 +29,6 @@ class PokeListFragment : Fragment(R.layout.fragment_poke_list) {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        setHasOptionsMenu(true)
         return super.onCreateView(inflater, container, savedInstanceState)
     }
 
@@ -53,21 +52,5 @@ class PokeListFragment : Fragment(R.layout.fragment_poke_list) {
         )
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, menuInflater: MenuInflater) {
-        menuInflater.inflate(R.menu.menu_search, menu)
-        // Associate searchable configuration with the SearchView
-        val searchManager = requireContext().getSystemService(Context.SEARCH_SERVICE) as SearchManager
-        val searchView = menu.findItem(R.id.search).actionView as? SearchView
-        searchView?.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                viewModel.onTextChange(query)
-                return false
-            }
 
-            override fun onQueryTextChange(newText: String?): Boolean {
-                viewModel.onTextChange(newText)
-                return false
-            }
-        })
-    }
 }
