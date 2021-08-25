@@ -6,6 +6,7 @@ import androidx.core.view.isInvisible
 import androidx.recyclerview.widget.RecyclerView
 import coil.load
 import com.poke.core.data.database.model.Poke
+import com.poke.core.extensions.asPokeNumber
 import com.poke.core.extensions.resIdByName
 import com.poke.feature_poke_list.R
 import com.poke.feature_poke_list.databinding.ViewHolderPokeBinding
@@ -25,6 +26,7 @@ class PokeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
             image.load(poke.image) {
                 crossfade(true)
             }
+            number.text = poke.number.asPokeNumber
             name.text = poke.name
         }
     }

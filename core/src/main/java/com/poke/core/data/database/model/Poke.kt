@@ -14,6 +14,7 @@ data class Poke(
     val description: String = "",
     val secondaryDescription: String = "",
     val image: String = "",
+    val svgImage: String = "",
     val color: String = "",
     val type: String = ""
 ) : Parcelable

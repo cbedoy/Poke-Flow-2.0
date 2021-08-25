@@ -11,7 +11,7 @@ import com.poke.core.data.database.model.Ability
 import com.poke.core.data.database.model.Move
 import com.poke.core.data.database.model.Stat
 
-@Database(entities = [Poke::class, Stat::class, Move::class, Ability::class], version = 4)
+@Database(entities = [Poke::class, Stat::class, Move::class, Ability::class], version = 5)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun pokeDao(): PokeDao
 

@@ -70,7 +70,8 @@ class PokeLocalStorageImpl (
             Poke(
                 number = id?:0,
                 name = name?.capitalize()?:"",
-                image = sprites?.avatar?:"",
+                image = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/$id.png",
+                svgImage = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/dream-world/$id.svg",
                 type = typesAsText,
                 color = ""
             )
