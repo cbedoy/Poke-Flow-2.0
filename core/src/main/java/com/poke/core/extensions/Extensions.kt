@@ -7,6 +7,7 @@ import android.view.Window
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import java.util.*
 
 val Long.asPokeNumber: String
     get() = String.format("%03d", this)
@@ -26,3 +27,6 @@ fun Context.resIdByName(resIdName: String?, resType: String): Int {
     }
     return 0
 }
+
+val String?.normalize: String
+    get() = this?.split("-")?.joinToString(" ") { it.capitalize(Locale.ROOT) }?: ""

@@ -8,11 +8,14 @@ import com.jakewharton.retrofit2.converter.kotlinx.serialization.asConverterFact
 import com.poke.core.*
 import com.poke.core.data.database.dao.PokeDao
 import com.poke.core.data.database.AppDatabase
+import com.poke.core.data.database.dao.AbilityDao
 import com.poke.core.data.database.dao.MoveDao
 import com.poke.core.data.database.dao.StatDao
 import com.poke.core.data.local.LocalSource
 import com.poke.core.data.local.LocalSourceImpl
 import com.poke.core.data.pagination.PokeBoundaryCallback
+import com.poke.core.data.pagination.PokeLocalStorage
+import com.poke.core.data.pagination.PokeLocalStorageImpl
 import com.poke.core.data.remote.PokeRemoteSource
 import com.poke.core.data.remote.PokeRemoteSourceImpl
 import com.poke.core.data.repo.PokeRepository
@@ -53,6 +56,10 @@ val coreModule = module {
         return database.moveDao()
     }
 
+    fun provideAbilityDao(database: AppDatabase): AbilityDao {
+        return database.abilityDao()
+    }
+
     fun provideRetrofit() : Retrofit {
         val logging = HttpLoggingInterceptor()
         logging.level = HttpLoggingInterceptor.Level.BODY
@@ -82,6 +89,7 @@ val coreModule = module {
     single { providePokeDao(get()) }
     single { provideStatDao(get()) }
     single { provideMoveDao(get())}
+    single { provideAbilityDao(get()) }
 
     factory {
         CoroutineScope(Dispatchers.IO + SupervisorJob())
@@ -89,7 +97,11 @@ val coreModule = module {
 
 
     single<PokeRepository>{
-        PokeRepositoryImpl(statDao = get(), moveDao = get())
+        PokeRepositoryImpl(
+            statDao = get(),
+            moveDao = get(),
+            abilityDao = get()
+        )
     }
 
     single {
@@ -102,9 +114,16 @@ val coreModule = module {
         PokeBoundaryCallback(
             pokeRemoteSource = get(),
             coroutineScope = get(),
+            pokeLocalStorage = get()
+        )
+    }
+
+    single<PokeLocalStorage> {
+        PokeLocalStorageImpl(
             pokeDao = get(),
             statDao = get(),
-            moveDao = get()
+            moveDao = get(),
+            abilityDao = get()
         )
     }
 

@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.poke.core.data.database.model.Move
 import com.poke.feature_poke_list.R
+import com.poke.feature_poke_list.feature.detail.abilitity.presentation.ui.AbilityViewHolder
 
 class MoveAdapter (private val moves: List<Move>) : RecyclerView.Adapter<MoveViewHolder>() {
 

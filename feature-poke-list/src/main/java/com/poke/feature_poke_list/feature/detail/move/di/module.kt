@@ -1,4 +1,4 @@
-package com.poke.feature_poke_list.feature.detail.move
+package com.poke.feature_poke_list.feature.detail.move.di
 
 import com.poke.feature_poke_list.feature.detail.move.domain.MoveUseCase
 import com.poke.feature_poke_list.feature.detail.move.presentation.MoveViewModel

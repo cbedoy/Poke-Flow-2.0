@@ -1,24 +1,23 @@
-package com.poke.feature_poke_list.feature.detail.move.presentation
+package com.poke.feature_poke_list.feature.detail.abilitity.presentation
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.poke.core.data.database.model.Move
+import com.poke.core.data.database.model.Ability
 import com.poke.feature_poke_list.feature.detail.abilitity.domain.AbilityUseCase
-import com.poke.feature_poke_list.feature.detail.move.domain.MoveUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 
-class MoveViewModel (private val useCase: MoveUseCase, private val pokeId: Long): ViewModel(){
+class AbilityViewModel (private val useCase: AbilityUseCase, private val pokeId: Long): ViewModel(){
 
-    private val _state = MutableStateFlow<List<Move>>(emptyList())
-    val state : StateFlow<List<Move>>
+    private val _state = MutableStateFlow<List<Ability>>(emptyList())
+    val state : StateFlow<List<Ability>>
         get() = _state
 
     init {
         viewModelScope.launch {
-            useCase.getMovePoke(pokeId).collectLatest {
+            useCase.getPokeAbility(pokeId).collectLatest {
                 _state.value = it
             }
         }

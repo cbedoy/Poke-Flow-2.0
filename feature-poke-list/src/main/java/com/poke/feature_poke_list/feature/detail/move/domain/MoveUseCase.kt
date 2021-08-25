@@ -4,7 +4,7 @@ import com.poke.core.data.repo.PokeRepository
 import kotlinx.coroutines.flow.flow
 
 class MoveUseCase(private val repository: PokeRepository) {
-    fun getPokeMoves(poke: Long) = flow {
+    fun getMovePoke(poke: Long) = flow {
         emit(repository.getMovesFrom(poke))
     }
 }
