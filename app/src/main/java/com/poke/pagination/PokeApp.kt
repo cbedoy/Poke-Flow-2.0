@@ -1,6 +1,8 @@
 package com.poke.pagination
 
 import android.app.Application
+import coil.ImageLoader
+import coil.decode.SvgDecoder
 import com.poke.core.di.coreModule
 import com.poke.feature_poke_list.feature.detail.abilitity.di.abilityModule
 import com.poke.feature_poke_list.feature.detail.move.di.moveModule
@@ -15,7 +17,7 @@ class PokeApp : Application() {
 
         startKoin {
             modules(
-                coreModule, statsModule, abilityModule, moveModule
+                coreModule, statsModule, abilityModule, moveModule, module
             )
             androidContext(this@PokeApp)
         }

@@ -5,18 +5,24 @@ import android.view.View
 import androidx.core.view.isInvisible
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
+import coil.ImageLoader
+import coil.decode.SvgDecoder
+import coil.imageLoader
 import coil.load
+import coil.request.ImageRequest
 import com.google.android.material.tabs.TabLayoutMediator
 import com.poke.core.data.database.model.Poke
 import com.poke.core.extensions.asPokeNumber
 import com.poke.core.extensions.resIdByName
 import com.poke.feature_poke_list.R
 import com.poke.feature_poke_list.databinding.FragmentPokeDetailBinding
+import org.koin.android.ext.android.inject
 import java.util.*
 
 class PokeDetailFragment : Fragment(R.layout.fragment_poke_detail){
 
     private val args: PokeDetailFragmentArgs by navArgs()
+    private val imageLoader by inject<ImageLoader>()
 
     private val selectedPoke: Poke
         get() = args.selectedPoke
@@ -33,7 +39,7 @@ class PokeDetailFragment : Fragment(R.layout.fragment_poke_detail){
             val pokeTypes = selectedPoke.type.split(",").map { it.capitalize() }
             reloadTypes(binding, types = pokeTypes)
             reloadBackground(binding, type = pokeTypes.firstOrNull())
-            image.load(selectedPoke.image) {
+            image.load(uri = selectedPoke.svgImage, imageLoader) {
                 crossfade(true)
             }
             name.text = selectedPoke.name
