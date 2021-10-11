@@ -32,7 +32,6 @@ class PokeViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), KoinCo
             image.load(poke.svgImage, imageLoader = imageLoader) {
                 crossfade(true)
             }
-            number.text = poke.number.asPokeNumber
             name.text = poke.name
         }
     }

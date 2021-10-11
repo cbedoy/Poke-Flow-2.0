@@ -37,26 +37,26 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:text="Pokenma" />
 
-            <Button
+            <TextView
                 android:id="@+id/type"
-                style="@style/PokeTypeButtonDetail"
+                style="@style/PokeTypeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:fontFamily="@font/roboto"
-                android:text="Button"
+                tools:text="Eat"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/name" />
 
-            <Button
+            <TextView
                 android:id="@+id/subType"
-                style="@style/PokeTypeButtonDetail"
+                style="@style/PokeTypeButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
                 android:fontFamily="@font/roboto"
-                tools:text="Button"
+                tools:text="Tacos"
                 app:layout_constraintBottom_toBottomOf="@+id/type"
                 app:layout_constraintStart_toEndOf="@+id/type"
                 app:layout_constraintTop_toTopOf="@+id/type" />
