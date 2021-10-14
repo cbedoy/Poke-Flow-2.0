@@ -5,10 +5,13 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.constraintlayout.compose.ConstraintLayout
@@ -18,12 +21,18 @@ import com.poke.core.data.database.model.Poke
 import com.poke.core.data.database.model.firstType
 import com.poke.feature_poke_list.feature.style.*
 
+typealias PokeItemOnClickListener = (Poke) -> Unit
+
+@ExperimentalMaterialApi
 @Composable
-fun PokeItem(poke: Poke){
+fun PokeItem(poke: Poke, listener: PokeItemOnClickListener){
     val pokeColor = PokeColorMap[poke.firstType]?: Normal
     Card(
         modifier = Modifier.fillMaxWidth(),
-        shape = RoundedCornerShape(CardRadius)
+        shape = RoundedCornerShape(CardRadius),
+        onClick = {
+            listener(poke)
+        }
     ){
         ConstraintLayout(
             modifier = Modifier
@@ -31,9 +40,14 @@ fun PokeItem(poke: Poke){
                 .padding(MediumPadding)
         ) {
             val (name, types, image) = createRefs()
-            Text(text = poke.name, color = White, modifier = Modifier.constrainAs(name) {
-                top.linkTo(parent.top, margin = 0.dp)
-            })
+            Text(
+                text = poke.name,
+                color = White,
+                fontSize = TitleTextSize,
+                modifier = Modifier.constrainAs(name) {
+                    top.linkTo(parent.top, margin = 0.dp)
+                }
+            )
             Column(
                 modifier = Modifier.constrainAs(types) {
                     top.linkTo(name.bottom, margin = 4.dp)
@@ -67,6 +81,7 @@ fun PokeItem(poke: Poke){
     }
 }
 
+@ExperimentalMaterialApi
 @Preview(showBackground = true, backgroundColor = 0xFF333333)
 @Composable
 fun PokeItemPreview(){
@@ -74,5 +89,7 @@ fun PokeItemPreview(){
         number = 1,
         name = "Poke name",
         type = "Fire,Water"
-    ))
+    )) {
+
+    }
 }

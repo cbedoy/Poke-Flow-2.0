@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.capitalize
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import com.poke.feature_poke_list.feature.style.*
 import java.util.*
@@ -23,6 +24,7 @@ fun PokeTypeText(type: String){
             text = type.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() },
             fontSize = TypeTextSize,
             color = Color.White,
+            textAlign = TextAlign.Center,
             modifier = Modifier
                 .width(TypeWidth)
                 .border(BorderStroke(

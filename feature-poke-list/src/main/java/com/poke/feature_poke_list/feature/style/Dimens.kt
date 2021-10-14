@@ -12,5 +12,5 @@ val BorderStrokeSize = 1.dp
 
 val TitleTextSize = 20.sp
 val TypeTextSize = 12.sp
-val TypeWidth = 48.dp
-val PokeCardSize = 60.dp
+val TypeWidth = 60.dp
+val PokeCardSize = 80.dp

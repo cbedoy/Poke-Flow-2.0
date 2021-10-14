@@ -8,17 +8,21 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.lazy.GridCells
 import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
+import androidx.navigation.fragment.NavHostFragment.findNavController
+import androidx.navigation.fragment.findNavController
 import com.poke.core.PokeViewModel
 import com.poke.core.PokeViewModel2
 import com.poke.core.data.database.model.Poke
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
+@ExperimentalMaterialApi
 @ExperimentalFoundationApi
 class PokeList2Fragment : Fragment(){
 
@@ -31,9 +35,19 @@ class PokeList2Fragment : Fragment(){
     ): View {
         return ComposeView(requireContext()).apply {
             setContent {
-                PokeList(viewModel)
+                PokeList(viewModel) { selectedPoke ->
+                    onSelectPoke(selectedPoke)
+                }
             }
         }
+    }
+
+    private fun onSelectPoke(selectedPoke: Poke) {
+        findNavController().navigate(
+            PokeList2FragmentDirections.actionPokeListFragmentToPokeDetailFragment(
+                selectedPoke = selectedPoke
+            )
+        )
     }
 }
 
