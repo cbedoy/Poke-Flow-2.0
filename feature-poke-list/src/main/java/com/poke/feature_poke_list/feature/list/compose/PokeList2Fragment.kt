@@ -32,12 +32,10 @@ class PokeList2Fragment : Fragment(){
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
-        return ComposeView(requireContext()).apply {
-            setContent {
-                PokeList(viewModel) { selectedPoke ->
-                    onSelectPoke(selectedPoke)
-                }
+    ) = ComposeView(requireContext()).apply {
+        setContent {
+            PokeList(viewModel) { selectedPoke ->
+                onSelectPoke(selectedPoke)
             }
         }
     }

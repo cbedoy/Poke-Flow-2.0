@@ -62,6 +62,7 @@ dependencies {
     api "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
 
     api "androidx.paging:paging-runtime-ktx:$paging_version"
+    api "com.google.accompanist:accompanist-pager:0.19.0"
 
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'

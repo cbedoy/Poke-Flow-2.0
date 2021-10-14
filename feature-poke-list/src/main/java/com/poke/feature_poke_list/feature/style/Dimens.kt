@@ -12,5 +12,14 @@ val BorderStrokeSize = 1.dp
 
 val TitleTextSize = 20.sp
 val TypeTextSize = 12.sp
+val PagerTextSize = 14.sp
+
+
 val TypeWidth = 60.dp
 val PokeCardSize = 80.dp
+
+
+val CommonMargin = 16.dp
+val MediumMargin = 8.dp
+val SmallMargin = 4.dp
+val LargeMargin = 32.dp

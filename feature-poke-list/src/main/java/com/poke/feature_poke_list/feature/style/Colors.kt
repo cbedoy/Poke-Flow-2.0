@@ -6,6 +6,7 @@ import androidx.core.graphics.toColorInt
 val White = Color.White
 val WhiteTransparent = "#11FFFFFF".toColorInt()
 val Black = Color.Black
+val PokeNumberColor = Color("#33FFFFFF".toColorInt())
 
 // Poke colors
 val Normal = "#A8A77A".toColorInt()

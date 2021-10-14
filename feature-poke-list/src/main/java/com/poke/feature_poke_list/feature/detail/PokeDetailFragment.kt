@@ -1,81 +1,29 @@
 package com.poke.feature_poke_list.feature.detail
 
 import android.os.Bundle
-import android.view.View
-import androidx.core.view.isInvisible
+import android.view.LayoutInflater
+import android.view.ViewGroup
+import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import coil.ImageLoader
-import coil.decode.SvgDecoder
-import coil.imageLoader
-import coil.load
-import coil.request.ImageRequest
-import com.google.android.material.tabs.TabLayoutMediator
 import com.poke.core.data.database.model.Poke
-import com.poke.core.extensions.asPokeNumber
-import com.poke.core.extensions.resIdByName
-import com.poke.feature_poke_list.R
-import com.poke.feature_poke_list.databinding.FragmentPokeDetailBinding
-import org.koin.android.ext.android.inject
-import java.util.*
+import com.poke.feature_poke_list.feature.detail.compose.PokeDetailView
 
-class PokeDetailFragment : Fragment(R.layout.fragment_poke_detail){
+class PokeDetailFragment : Fragment(){
 
     private val args: PokeDetailFragmentArgs by navArgs()
-    private val imageLoader by inject<ImageLoader>()
 
     private val selectedPoke: Poke
         get() = args.selectedPoke
 
-    private val pokeId: Long
-        get() = args.selectedPoke.number
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        val binding = FragmentPokeDetailBinding.bind(view)
-
-        with(binding) {
-            val pokeTypes = selectedPoke.type.split(",").map { it.capitalize() }
-            reloadTypes(binding, types = pokeTypes)
-            reloadBackground(binding, type = pokeTypes.firstOrNull())
-            image.load(uri = selectedPoke.svgImage, imageLoader) {
-                crossfade(true)
-            }
-            name.text = selectedPoke.name
-            number.text = selectedPoke.number.asPokeNumber
-
-            val pokeDetailPageAdapter = PokeDetailPageAdapter(pokeId, this@PokeDetailFragment)
-            pager.adapter = pokeDetailPageAdapter
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ) = ComposeView(requireContext()).apply {
+        setContent {
+            PokeDetailView(poke = selectedPoke)
         }
     }
 
-    private fun reloadBackground(binding: FragmentPokeDetailBinding, type: String?) {
-        binding.container.setBackgroundResource(binding.container.context.resIdByName(
-            resIdName = type?.toLowerCase(Locale.ROOT),
-                resType = "color"
-        ))
-    }
-
-    private fun reloadTypes(binding: FragmentPokeDetailBinding, types: List<String>) {
-        with(binding) {
-            when (types.size) {
-                0 -> {
-                    type.isInvisible = true
-                    subType.isInvisible = true
-                }
-                1 -> {
-                    type.isInvisible = false
-                    subType.isInvisible = true
-                    type.text = types.first()
-                }
-                else -> {
-                    type.isInvisible = false
-                    subType.isInvisible = false
-                    type.text = types.first()
-                    subType.text = types.last()
-                }
-            }
-        }
-    }
 }
