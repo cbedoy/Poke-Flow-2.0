@@ -10,6 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,6 +36,8 @@ fun PokeDetailView(poke: Poke) {
             text = poke.name,
             fontSize = 40.sp,
             color = White,
+            fontWeight = FontWeight.Medium,
+            fontStyle = FontStyle.Normal,
             modifier = Modifier.constrainAs(name) {
                 top.linkTo(parent.top, margin = CommonMargin)
                 start.linkTo(parent.start, margin = CommonMargin)
@@ -47,7 +51,7 @@ fun PokeDetailView(poke: Poke) {
             }
         ) {
             poke.type.split(",").forEach {
-                PokeTypeText(type = it)
+                PokeTypeText(type = it, multiplier = 1.5f)
                 Spacer(modifier = Modifier.width(8.dp))
             }
         }
@@ -62,7 +66,7 @@ fun PokeDetailView(poke: Poke) {
             }
         )
 
-        Box(modifier = Modifier
+        Column(modifier = Modifier
             .clip(
                 RoundedCornerShape(
                     topStart = LargeMargin,
@@ -72,16 +76,16 @@ fun PokeDetailView(poke: Poke) {
                 )
             )
             .background(White)
-            .fillMaxSize()
+            .fillMaxWidth()
+            .fillMaxHeight(fraction = 1.0f)
             .constrainAs(container) {
                 top.linkTo(type.bottom, margin = 450.dp)
-                bottom.linkTo(parent.bottom)
+                bottom.linkTo(parent.bottom, margin = 0.dp)
                 start.linkTo(parent.start)
                 end.linkTo(parent.end)
             }) {
-                Box(modifier = Modifier.padding(top = 120.dp).fillMaxWidth()) {
-                    PokePager(poke = poke)
-                }
+
+            PokePager(poke = poke)
         }
 
         Box(modifier = Modifier

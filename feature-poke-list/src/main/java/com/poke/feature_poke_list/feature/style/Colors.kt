@@ -13,7 +13,7 @@ val Normal = "#A8A77A".toColorInt()
 val Fire = "#EE8130".toColorInt()
 val Water = "#6390F0".toColorInt()
 val Electric = "#F7D02C".toColorInt()
-val Glass = "#7AC74C".toColorInt()
+val Grass = "#7AC74C".toColorInt()
 val Ice = "#96D9D6".toColorInt()
 val Fighting = "#C22E28".toColorInt()
 val Poison = "#A33EA1".toColorInt()
@@ -30,11 +30,11 @@ val Fairy = "#D685AD".toColorInt()
 
 val PokeColorMap = mapOf(
     "Normal" to Normal,
+    "Grass" to Grass,
     "Fire" to Fire,
     "Water" to Water,
     "Electric" to Electric,
     "Fire" to Fire,
-    "Glass" to Glass,
     "Ice" to Ice,
     "Fighting" to Fighting,
     "Poison" to Poison,

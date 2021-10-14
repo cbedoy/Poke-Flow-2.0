@@ -17,7 +17,7 @@ class PokeViewModel2(
 
     init {
         viewModelScope.launch {
-            getPokesUseCase(10).collect {
+            getPokesUseCase(150).collect {
                 _state.emit(it)
             }
         }

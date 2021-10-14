@@ -11,6 +11,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.Font
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
@@ -44,6 +45,8 @@ fun PokeItem(poke: Poke, listener: PokeItemOnClickListener){
                 text = poke.name,
                 color = White,
                 fontSize = TitleTextSize,
+                fontWeight = FontWeight.Medium,
+                fontStyle = FontStyle.Normal,
                 modifier = Modifier.constrainAs(name) {
                     top.linkTo(parent.top, margin = 0.dp)
                 }

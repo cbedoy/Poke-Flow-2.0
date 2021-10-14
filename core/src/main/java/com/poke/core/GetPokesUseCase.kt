@@ -19,7 +19,7 @@ class GetPokesUseCase(
             size
         }
 
-        while (pokeCount < currentPokeCount) {
+        while (currentPokeCount < pokeCount) {
             service.getPokeDetail("${currentPokeCount+1}").let { networkResponse ->
                 when(networkResponse) {
                     is NetworkResponse.Success -> {

@@ -10,23 +10,28 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.capitalize
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.TextUnit
 import com.poke.feature_poke_list.feature.style.*
 import java.util.*
 
 @Composable
-fun PokeTypeText(type: String){
+fun PokeTypeText(type: String, multiplier: Float = 1f){
     Column(
         verticalArrangement = Arrangement.Center
     ) {
         Text(
             text = type.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() },
-            fontSize = TypeTextSize,
+            fontSize = TypeTextSize * multiplier,
             color = Color.White,
             textAlign = TextAlign.Center,
+            fontWeight = FontWeight.Normal,
+            fontStyle = FontStyle.Normal,
             modifier = Modifier
-                .width(TypeWidth)
+                .width(TypeWidth * multiplier)
                 .border(BorderStroke(
                     BorderStrokeSize,
                     White
