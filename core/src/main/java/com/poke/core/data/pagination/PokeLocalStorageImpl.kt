@@ -22,6 +22,9 @@ class PokeLocalStorageImpl (
     override val getPokeCount: Int
         get() = pokeDao.getAll().size
 
+    override val currentPokes: List<Poke>
+        get() = pokeDao.getAll()
+
     override fun savePoke(response: PokeItemResponse) {
         val poke =  preparePokeWith(response)
         val stats = prepareStatWith(response)

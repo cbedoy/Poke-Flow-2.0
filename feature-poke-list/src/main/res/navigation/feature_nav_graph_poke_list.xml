@@ -8,7 +8,7 @@
     <fragment
         tools:layout="@layout/fragment_poke_list"
         android:id="@+id/pokeListFragment"
-        android:name="com.poke.feature_poke_list.feature.list.PokeListFragment"
+        android:name="com.poke.feature_poke_list.feature.list.compose.PokeList2Fragment"
         android:label="PokeListFragment" >
         <action
             android:id="@+id/action_pokeListFragment_to_pokeDetailFragment"

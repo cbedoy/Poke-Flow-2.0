@@ -10,18 +10,18 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.poke.core.PokeViewModel
 import com.poke.feature_poke_list.R
-import com.poke.feature_poke_list.databinding.FragmentPokeListBinding
-import org.koin.android.viewmodel.ext.android.viewModel
+//import com.poke.feature_poke_list.databinding.FragmentPokeListBinding
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class PokeListFragment : Fragment(R.layout.fragment_poke_list) {
 
     private val viewModel by viewModel<PokeViewModel>()
     private val pokeListAdapter = PokeListAdapter {
-        findNavController().navigate(
-                PokeListFragmentDirections.actionPokeListFragmentToPokeDetailFragment(
-                        selectedPoke = it
-                )
-        )
+        //findNavController().navigate(
+                //PokeListFragmentDirections.actionPokeListFragmentToPokeDetailFragment(
+                //        selectedPoke = it
+                //)
+        //)
     }
 
     override fun onCreateView(
@@ -35,6 +35,7 @@ class PokeListFragment : Fragment(R.layout.fragment_poke_list) {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        /*
         val binding = FragmentPokeListBinding.bind(view)
 
         with(binding) {
@@ -49,7 +50,7 @@ class PokeListFragment : Fragment(R.layout.fragment_poke_list) {
             {
                 pokeListAdapter.submitList(it)
             }
-        )
+        )*/
     }
 
 

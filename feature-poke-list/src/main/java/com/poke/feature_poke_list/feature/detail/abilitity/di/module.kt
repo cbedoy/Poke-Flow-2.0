@@ -2,7 +2,7 @@ package com.poke.feature_poke_list.feature.detail.abilitity.di
 
 import com.poke.feature_poke_list.feature.detail.abilitity.domain.AbilityUseCase
 import com.poke.feature_poke_list.feature.detail.abilitity.presentation.AbilityViewModel
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val abilityModule = module {

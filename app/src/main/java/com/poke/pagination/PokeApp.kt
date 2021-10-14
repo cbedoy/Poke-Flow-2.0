@@ -1,12 +1,10 @@
 package com.poke.pagination
 
 import android.app.Application
-import coil.ImageLoader
-import coil.decode.SvgDecoder
 import com.poke.core.di.coreModule
 import com.poke.feature_poke_list.feature.detail.abilitity.di.abilityModule
 import com.poke.feature_poke_list.feature.detail.move.di.moveModule
-import com.poke.feature_poke_list.feature.detail.stats.statsModule
+import com.poke.feature_poke_list.feature.detail.stats.di.statsModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 

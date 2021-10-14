@@ -29,7 +29,7 @@ import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import org.koin.android.ext.koin.androidApplication
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 import retrofit2.Retrofit
 
@@ -144,6 +144,20 @@ val coreModule = module {
     viewModel {
         PokeViewModel(
             localSource = get()
+        )
+    }
+
+    viewModel {
+        PokeViewModel2(
+            getPokesUseCase = get()
+        )
+    }
+
+    factory {
+        GetPokesUseCase(
+            service = get(),
+            pokeLocalStorage = get(),
+            ioCoroutineScope = Dispatchers.IO
         )
     }
 

@@ -5,6 +5,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 import kotlinx.serialization.Serializable
+import java.util.*
 
 @Entity
 @Parcelize
@@ -18,3 +19,6 @@ data class Poke(
     val color: String = "",
     val type: String = ""
 ) : Parcelable
+
+val Poke.firstType //WTF kotlin with replaceFirstChar ._.
+    get() = this.type.split(",").firstOrNull()?.replaceFirstChar { if (it.isLowerCase()) it.titlecase(Locale.getDefault()) else it.toString() }

@@ -9,7 +9,7 @@ import com.poke.feature_poke_list.R
 import com.poke.feature_poke_list.databinding.FragmentStatsBinding
 import com.poke.feature_poke_list.feature.detail.abilitity.presentation.AbilityViewModel
 import kotlinx.coroutines.flow.collect
-import org.koin.android.viewmodel.ext.android.viewModel
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.parameter.parametersOf
 
 const val ABILITY_FRAGMENT_POKE_ID = "args-stats-fragment-poke-id"

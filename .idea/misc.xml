@@ -3,6 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../layout/compose-model-1633978430453.xml" value="0.5880758807588076" />
+        <entry key="../../../../layout/compose-model-1633978967873.xml" value="0.6978319783197832" />
+        <entry key="../../../../layout/compose-model-1633979252382.xml" value="0.6924119241192412" />
+        <entry key="../../../../layout/compose-model-1633979487561.xml" value="2.0" />
+        <entry key="../../../../layout/compose-model-1634149238867.xml" value="0.32514817950889074" />
+        <entry key="../../../../layout/compose-model-1634149344790.xml" value="1.5" />
+        <entry key="../../../../layout/compose-model-1634161270263.xml" value="0.32430143945808637" />
+        <entry key="../../../../layout/compose-model-1634166292675.xml" value="0.5287037037037037" />
+        <entry key="../../../../layout/compose-model-1634169561785.xml" value="0.6555555555555556" />
+        <entry key="../../../../layout/compose-model-1634170025030.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.3144736842105263" />
+        <entry key="feature-poke-list/src/main/res/drawable/action_search.xml" value="0.3280701754385965" />
         <entry key="feature-poke-list/src/main/res/drawable/ball_background.xml" value="0.3118421052631579" />
         <entry key="feature-poke-list/src/main/res/drawable/drawable_circle.xml" value="0.17982456140350878" />
         <entry key="feature-poke-list/src/main/res/drawable/drawable_corner_top.xml" value="0.17982456140350878" />
@@ -15,12 +27,12 @@
         <entry key="feature-poke-list/src/main/res/layout/fragment_stats.xml" value="0.32518115942028986" />
         <entry key="feature-poke-list/src/main/res/layout/view_holder_ability.xml" value="0.3541666666666667" />
         <entry key="feature-poke-list/src/main/res/layout/view_holder_move.xml" value="0.35625" />
-        <entry key="feature-poke-list/src/main/res/layout/view_holder_poke.xml" value="0.5" />
+        <entry key="feature-poke-list/src/main/res/layout/view_holder_poke.xml" value="0.44315992292870904" />
         <entry key="feature-poke-list/src/main/res/layout/view_holder_stat.xml" value="0.3242753623188406" />
       </map>
     </option>
   </component>
-  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="true" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" project-jdk-name="1.8" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
   <component name="ProjectType">

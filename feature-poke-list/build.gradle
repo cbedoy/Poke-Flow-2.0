@@ -31,6 +31,12 @@ android {
     }
     buildFeatures {
         viewBinding = true
+        compose true
+    }
+
+    composeOptions {
+        kotlinCompilerExtensionVersion compose_version
+        kotlinCompilerVersion kotlin_version
     }
 }
 
@@ -45,10 +51,18 @@ dependencies {
     api "io.coil-kt:coil-svg:$coil_version"
 
     api "io.insert-koin:koin-android:$koin_version"
-    api "io.insert-koin:koin-android-viewmodel:$koin_version"
     api "io.insert-koin:koin-core:$koin_version"
+    api "io.insert-koin:koin-androidx-compose:$koin_version"
+
+    api "androidx.compose.material:material:$compose_version"
+    api "androidx.compose.ui:ui-tooling:$compose_version"
+    api "io.coil-kt:coil-compose:1.4.0"
+
+    api "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07"
+    api "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
 
     api "androidx.paging:paging-runtime-ktx:$paging_version"
+
     implementation 'androidx.navigation:navigation-fragment-ktx:2.3.5'
     implementation 'androidx.navigation:navigation-ui-ktx:2.3.5'
 

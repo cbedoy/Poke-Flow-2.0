@@ -1,8 +1,8 @@
-package com.poke.feature_poke_list.feature.detail.stats
+package com.poke.feature_poke_list.feature.detail.stats.di
 
 import com.poke.feature_poke_list.feature.detail.stats.domain.StatsUseCase
 import com.poke.feature_poke_list.feature.detail.stats.presentation.StatsViewModel
-import org.koin.android.viewmodel.dsl.viewModel
+import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val statsModule = module {
